@@ -1,0 +1,885 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CloudNova — Global Edge Hosting</title>
+  <meta name="description"
+    content="CloudNova is a conceptual cloud hosting and global edge CDN platform demonstrating low-latency content delivery, automated Git deployments, and HTTPS/TLS security." />
+  <meta name="theme-color" content="#070b14" />
+
+  <!-- Open Graph Metadata -->
+  <meta property="og:title" content="CloudNova — Global Edge Hosting" />
+  <meta property="og:description"
+    content="Your apps. Everywhere. At the speed of now. Explore global edge delivery, automated Git workflows, and HTTPS security." />
+  <meta property="og:type" content="website" />
+
+  <!-- Inline SVG Data URI Favicon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2338bdf8'/%3E%3Cstop offset='100%25' stop-color='%232563eb'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='%230b1221'/%3E%3Cpath d='M9 20.5h13a4.5 4.5 0 0 0 .6-8.96A6.5 6.5 0 0 0 10.1 9.8 5 5 0 0 0 9 20.5Z' fill='none' stroke='url(%23g)' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='15.5' r='2' fill='%2338bdf8'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- Animation Libraries: GSAP, ScrollTrigger, and Lenis Smooth Scroll -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
+</head>
+
+<body class="bg-grid-pattern">
+  <!-- Skip to Main Content Link for Keyboard Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ========================================================================
+       A. STICKY RESPONSIVE NAVIGATION
+       ======================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-container">
+      <!-- CloudNova Original Brand Mark -->
+      <a href="#top" class="brand-link" aria-label="CloudNova Home">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#38bdf8" />
+              <stop offset="100%" stop-color="#2563eb" />
+            </linearGradient>
+          </defs>
+          <rect width="32" height="32" rx="8" fill="url(#logoGrad)" fill-opacity="0.16" stroke="url(#logoGrad)"
+            stroke-width="1.5" />
+          <path d="M9.5 20.5H22a4.2 4.2 0 0 0 .55-8.36A6 6 0 0 0 10.9 10.5 4.7 4.7 0 0 0 9.5 20.5Z"
+            stroke="url(#logoGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="16" cy="15.8" r="2" fill="#38bdf8" />
+        </svg>
+        <span>CloudNova</span>
+        <span class="brand-badge-sub">Edge</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav" aria-label="Primary Navigation">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#global-servers" class="nav-link">Global Servers</a>
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#speed-test" class="nav-link">Live Speed Test</a>
+      </nav>
+
+      <!-- Header Utility Controls -->
+      <div class="nav-actions">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to light theme"
+          title="Toggle color theme">
+          <!-- Sun Icon (shown in dark mode to switch to light) -->
+          <svg id="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <path
+              d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+          </svg>
+          <!-- Moon Icon (shown in light mode to switch to dark) -->
+          <svg id="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: none">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+          </svg>
+        </button>
+
+        <a href="#speed-test" class="btn btn-primary btn-sm desktop-cta">Run Speed Test</a>
+
+        <!-- Mobile Menu Toggle -->
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-expanded="false"
+          aria-controls="mobile-drawer" aria-label="Open navigation menu">
+          <svg id="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+          <svg id="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: none">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer" role="region" aria-label="Mobile Navigation" hidden>
+    <a href="#features" class="mobile-nav-link">Features</a>
+    <a href="#global-servers" class="mobile-nav-link">Global Servers</a>
+    <a href="#how-it-works" class="mobile-nav-link">How It Works</a>
+    <a href="#security" class="mobile-nav-link">HTTPS Security</a>
+    <a href="#speed-test" class="mobile-nav-link">Live Speed Test</a>
+    <a href="#speed-test" class="btn btn-primary" style="margin-top: 6px">Run Speed Test</a>
+  </div>
+
+  <!-- ========================================================================
+       MAIN CONTENT
+       ======================================================================== -->
+  <main id="main-content">
+    <!-- ======================================================================
+         B. HERO SECTION
+         ====================================================================== -->
+    <section class="hero-section" id="top">
+      <div class="container hero-grid">
+        <!-- Left Column: Copy & CTAs -->
+        <div class="hero-content gs-reveal">
+          <div class="trust-pill">
+            <span class="trust-pill-dot" aria-hidden="true"></span>
+            <span>HTTPS / SSL Secured &bull; 99.99% Uptime</span>
+            <span class="concept-tag">Platform concept</span>
+          </div>
+
+          <p class="hero-tagline">
+            Your apps. Everywhere. At the speed of now.
+          </p>
+
+          <h1 class="hero-title">
+            Host Your Web Apps on Global Edge Servers
+          </h1>
+
+          <p class="hero-description">
+            CloudNova routes incoming requests toward nearby edge locations to
+            serve cached assets quickly, automates deployments directly from
+            your Git workflow, and protects visitor connections with encrypted
+            HTTPS access.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#speed-test" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m13 2-2 10h8l-8 10 2-10H5l8-10z" />
+              </svg>
+              <span>Test Server Speed</span>
+            </a>
+            <a href="#features" class="btn btn-secondary">Explore Features</a>
+          </div>
+
+          <p class="hero-disclaimer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 2px">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="16" x2="12" y2="12" />
+              <line x1="12" y1="8" x2="12.01" y2="8" />
+            </svg>
+            <span>Illustrative product model: Uptime figures and network topology
+              visuals demonstrate how modern edge cloud hosting
+              operates.</span>
+          </p>
+        </div>
+
+        <!-- Right Column: Decorative SVG Edge Network Visualization -->
+        <div class="hero-visual-card gs-reveal"
+          aria-label="Decorative illustration of a central origin cloud connected to four regional edge nodes">
+          <div class="visual-card-header">
+            <span>EDGE TOPOLOGY OVERVIEW</span>
+            <span class="visual-status-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
+              TLS 1.3 Active
+            </span>
+          </div>
+
+          <svg class="network-svg" viewBox="0 0 500 320" fill="none" role="img"
+            aria-label="Diagram showing CloudNova Origin connected to Virginia, Frankfurt, Mumbai, and Tokyo edge nodes">
+            <defs>
+              <radialGradient id="originGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.32" />
+                <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+              </radialGradient>
+              <linearGradient id="routeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#38bdf8" />
+                <stop offset="100%" stop-color="#3b82f6" />
+              </linearGradient>
+            </defs>
+
+            <!-- Subtle Latitude/Longitude Rings -->
+            <circle cx="250" cy="160" r="135" stroke="currentColor" stroke-opacity="0.08" stroke-dasharray="4 4" />
+            <circle cx="250" cy="160" r="88" stroke="currentColor" stroke-opacity="0.08" />
+            <line x1="40" y1="160" x2="460" y2="160" stroke="currentColor" stroke-opacity="0.06" />
+            <line x1="250" y1="20" x2="250" y2="300" stroke="currentColor" stroke-opacity="0.06" />
+
+            <!-- Origin Ambient Glow -->
+            <circle cx="250" cy="160" r="76" fill="url(#originGlow)" />
+
+            <!-- Base Connection Lines -->
+            <line x1="250" y1="160" x2="96" y2="78" stroke="#38bdf8" stroke-opacity="0.25" stroke-width="2" />
+            <line x1="250" y1="160" x2="404" y2="74" stroke="#38bdf8" stroke-opacity="0.25" stroke-width="2" />
+            <line x1="250" y1="160" x2="104" y2="246" stroke="#38bdf8" stroke-opacity="0.25" stroke-width="2" />
+            <line x1="250" y1="160" x2="404" y2="244" stroke="#38bdf8" stroke-opacity="0.25" stroke-width="2" />
+
+            <!-- Animated Data Flow Overlays -->
+            <line class="svg-flow-line" x1="250" y1="160" x2="96" y2="78" stroke="url(#routeGrad)" stroke-width="2.2" />
+            <line class="svg-flow-line" x1="250" y1="160" x2="404" y2="74" stroke="url(#routeGrad)"
+              stroke-width="2.2" />
+            <line class="svg-flow-line" x1="250" y1="160" x2="104" y2="246" stroke="url(#routeGrad)"
+              stroke-width="2.2" />
+            <line class="svg-flow-line" x1="250" y1="160" x2="404" y2="244" stroke="url(#routeGrad)"
+              stroke-width="2.2" />
+
+            <!-- Edge Node 1: Virginia (Top Left) -->
+            <g transform="translate(96, 78)">
+              <circle class="svg-node-ring" r="14" stroke="#38bdf8" stroke-width="1.5" />
+              <circle r="7" fill="#0c1322" stroke="#38bdf8" stroke-width="2.5" />
+              <rect x="-46" y="-36" width="92" height="22" rx="6" fill="#0f172a" stroke="#38bdf8"
+                stroke-opacity="0.4" />
+              <text x="0" y="-21" text-anchor="middle" fill="#f1f5f9" font-size="11" font-family="monospace"
+                font-weight="600">
+                US-EAST (IAD)
+              </text>
+            </g>
+
+            <!-- Edge Node 2: Frankfurt (Top Right) -->
+            <g transform="translate(404, 74)">
+              <circle class="svg-node-ring" r="14" stroke="#38bdf8" stroke-width="1.5" style="animation-delay: 0.7s" />
+              <circle r="7" fill="#0c1322" stroke="#38bdf8" stroke-width="2.5" />
+              <rect x="-48" y="-36" width="96" height="22" rx="6" fill="#0f172a" stroke="#38bdf8"
+                stroke-opacity="0.4" />
+              <text x="0" y="-21" text-anchor="middle" fill="#f1f5f9" font-size="11" font-family="monospace"
+                font-weight="600">
+                EU-CENT (FRA)
+              </text>
+            </g>
+
+            <!-- Edge Node 3: Mumbai (Bottom Left) -->
+            <g transform="translate(104, 246)">
+              <circle class="svg-node-ring" r="14" stroke="#38bdf8" stroke-width="1.5" style="animation-delay: 1.4s" />
+              <circle r="7" fill="#0c1322" stroke="#38bdf8" stroke-width="2.5" />
+              <rect x="-50" y="14" width="100" height="22" rx="6" fill="#0f172a" stroke="#38bdf8"
+                stroke-opacity="0.4" />
+              <text x="0" y="29" text-anchor="middle" fill="#f1f5f9" font-size="11" font-family="monospace"
+                font-weight="600">
+                AP-SOUTH (BOM)
+              </text>
+            </g>
+
+            <!-- Edge Node 4: Tokyo (Bottom Right) -->
+            <g transform="translate(404, 244)">
+              <circle class="svg-node-ring" r="14" stroke="#38bdf8" stroke-width="1.5" style="animation-delay: 2.1s" />
+              <circle r="7" fill="#0c1322" stroke="#38bdf8" stroke-width="2.5" />
+              <rect x="-50" y="14" width="100" height="22" rx="6" fill="#0f172a" stroke="#38bdf8"
+                stroke-opacity="0.4" />
+              <text x="0" y="29" text-anchor="middle" fill="#f1f5f9" font-size="11" font-family="monospace"
+                font-weight="600">
+                AP-NEAST (NRT)
+              </text>
+            </g>
+
+            <!-- Central Origin Cloud Hub -->
+            <g transform="translate(250, 160)">
+              <rect x="-56" y="-34" width="112" height="68" rx="16" fill="#0f172a" stroke="#38bdf8" stroke-width="2" />
+              <!-- Cloud Icon -->
+              <path d="M-12 4h22a5 5 0 0 0 .7-9.95A7.2 7.2 0 0 0-10.6-7.8 5.6 5.6 0 0 0-12 4Z" stroke="#38bdf8"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(0, -6)" />
+              <text x="0" y="18" text-anchor="middle" fill="#f1f5f9" font-size="11" font-family="monospace"
+                font-weight="700">
+                ORIGIN CORE
+              </text>
+            </g>
+          </svg>
+
+          <div class="visual-card-footer">
+            <span>Anycast Routing Concept</span>
+            <span>Illustrative schematic &bull; Not live telemetry</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         C. FEATURES SECTION
+         ====================================================================== -->
+    <section class="features-section" id="features">
+      <div class="container">
+        <div class="section-header centered gs-reveal">
+          <span class="section-eyebrow">Core Capabilities</span>
+          <h2 class="section-title">
+            Everything you need to ship with confidence
+          </h2>
+          <p class="section-subtitle">
+            Modern cloud hosting combines distributed caching, automated build
+            pipelines, and transport encryption so your web applications load
+            quickly and safely.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <!-- Feature 1: Edge CDN Delivery -->
+          <article class="feature-card gs-card">
+            <div class="feature-icon-wrap" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="2" y1="12" x2="22" y2="12" />
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+              </svg>
+            </div>
+            <h3 class="feature-title">Edge CDN Delivery</h3>
+            <p class="feature-desc">
+              Static files like HTML, CSS, JavaScript, and images are cached
+              at geographically distributed edge nodes so visitors receive
+              assets from a server close to them.
+            </p>
+          </article>
+
+          <!-- Feature 2: Automatic Git Deployment -->
+          <article class="feature-card gs-card">
+            <div class="feature-icon-wrap" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="6" y1="3" x2="6" y2="15" />
+                <circle cx="18" cy="6" r="3" />
+                <circle cx="6" cy="18" r="3" />
+                <path d="M18 9a9 9 0 0 1-9 9" />
+              </svg>
+            </div>
+            <h3 class="feature-title">Automatic Git Deployment</h3>
+            <p class="feature-desc">
+              Connect a source repository so every commit pushed to your
+              production branch triggers an automated build and propagates
+              updated assets across the network.
+            </p>
+          </article>
+
+          <!-- Feature 3: Free SSL/TLS Security -->
+          <article class="feature-card gs-card">
+            <div class="feature-icon-wrap" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
+            </div>
+            <h3 class="feature-title">Free SSL/TLS Security</h3>
+            <p class="feature-desc">
+              Automated TLS certificates authenticate your domain identity and
+              encrypt traffic between browsers and edge servers using modern
+              HTTPS protocols.
+            </p>
+          </article>
+
+          <!-- Feature 4: DDoS Protection -->
+          <article class="feature-card gs-card">
+            <div class="feature-icon-wrap" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <path d="m9 12 2 2 4-4" />
+              </svg>
+            </div>
+            <h3 class="feature-title">DDoS Protection</h3>
+            <p class="feature-desc">
+              In production edge architectures, anomalous traffic spikes are
+              filtered at the network perimeter before reaching origin servers
+              to preserve availability.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         D. GLOBAL EDGE NETWORK / SERVER STATUS
+         ====================================================================== -->
+    <section id="global-servers">
+      <div class="container">
+        <div class="section-header gs-reveal">
+          <span class="section-eyebrow">Regional Points of Presence</span>
+          <h2 class="section-title">
+            A global network, closer to every visitor
+          </h2>
+          <p class="section-subtitle">
+            Serving content from regional edge locations reduces the physical
+            distance data travels across undersea cables and backbone
+            networks.
+          </p>
+        </div>
+
+        <div class="servers-layout">
+          <!-- Explicit Demo Data Disclosure -->
+          <div class="demo-banner gs-reveal" role="note">
+            <span class="demo-label">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                <line x1="12" y1="9" x2="12" y2="13" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg>
+              Illustrative demo data
+            </span>
+            <span style="color: var(--text-secondary)">
+              The regional figures below are static reference examples, not
+              live server telemetry.
+            </span>
+          </div>
+
+          <!-- 4 Regional Server Cards -->
+          <div class="servers-grid">
+            <article class="server-card gs-card">
+              <div class="server-card-top">
+                <div>
+                  <h3 class="server-city">Mumbai</h3>
+                  <p class="server-country">India &bull; ap-south-1</p>
+                </div>
+                <span class="status-chip">
+                  <span class="status-dot" aria-hidden="true"></span>
+                  Online
+                </span>
+              </div>
+              <div class="server-metric-box">
+                <span class="server-metric-label">Sample latency</span>
+                <span class="server-metric-value">18 ms</span>
+              </div>
+            </article>
+
+            <article class="server-card gs-card">
+              <div class="server-card-top">
+                <div>
+                  <h3 class="server-city">Virginia</h3>
+                  <p class="server-country">USA &bull; us-east-1</p>
+                </div>
+                <span class="status-chip">
+                  <span class="status-dot" aria-hidden="true"></span>
+                  Online
+                </span>
+              </div>
+              <div class="server-metric-box">
+                <span class="server-metric-label">Sample latency</span>
+                <span class="server-metric-value">24 ms</span>
+              </div>
+            </article>
+
+            <article class="server-card gs-card">
+              <div class="server-card-top">
+                <div>
+                  <h3 class="server-city">Frankfurt</h3>
+                  <p class="server-country">Germany &bull; eu-central-1</p>
+                </div>
+                <span class="status-chip">
+                  <span class="status-dot" aria-hidden="true"></span>
+                  Online
+                </span>
+              </div>
+              <div class="server-metric-box">
+                <span class="server-metric-label">Sample latency</span>
+                <span class="server-metric-value">21 ms</span>
+              </div>
+            </article>
+
+            <article class="server-card gs-card">
+              <div class="server-card-top">
+                <div>
+                  <h3 class="server-city">Tokyo</h3>
+                  <p class="server-country">Japan &bull; ap-northeast-1</p>
+                </div>
+                <span class="status-chip">
+                  <span class="status-dot" aria-hidden="true"></span>
+                  Online
+                </span>
+              </div>
+              <div class="server-metric-box">
+                <span class="server-metric-label">Sample latency</span>
+                <span class="server-metric-value">29 ms</span>
+              </div>
+            </article>
+          </div>
+
+          <p class="latency-note gs-reveal">
+            <strong>Why latency varies:</strong> Actual response times depend
+            on your physical distance from a server, ISP routing paths, local
+            Wi-Fi or mobile network conditions, device load, and whether the
+            requested asset is already cached at the edge.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         E. HOW IT WORKS + SAMPLE DEPLOYMENT ACTIVITY
+         ====================================================================== -->
+    <section class="workflow-section" id="how-it-works">
+      <div class="container">
+        <div class="section-header centered gs-reveal">
+          <span class="section-eyebrow">Deployment Workflow</span>
+          <h2 class="section-title">
+            From code to global delivery in three steps
+          </h2>
+          <p class="section-subtitle">
+            An illustrative look at how source code moves from a developer’s
+            workstation to distributed edge caches.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <!-- Step 1 -->
+          <article class="step-card gs-card">
+            <div class="step-header">
+              <span class="step-number">Step 01</span>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" />
+              </svg>
+            </div>
+            <h3 class="step-title">Write Your Code</h3>
+            <p class="step-desc">
+              Build and test your HTML, CSS, JavaScript, or frontend framework
+              project locally using standard version control.
+            </p>
+          </article>
+
+          <!-- Step 2 -->
+          <article class="step-card gs-card">
+            <div class="step-header">
+              <span class="step-number">Step 02</span>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="18" r="3" />
+                <circle cx="6" cy="6" r="3" />
+                <circle cx="18" cy="6" r="3" />
+                <path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9" />
+                <path d="M12 12v3" />
+              </svg>
+            </div>
+            <h3 class="step-title">Push to GitHub</h3>
+            <p class="step-desc">
+              Commit your updates and push them to a connected Git repository,
+              which notifies the hosting build pipeline via webhook.
+            </p>
+          </article>
+
+          <!-- Step 3 -->
+          <article class="step-card gs-card">
+            <div class="step-header">
+              <span class="step-number">Step 03</span>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+              </svg>
+            </div>
+            <h3 class="step-title">Deploy to the Edge</h3>
+            <p class="step-desc">
+              The hosting platform compiles production assets, provisions
+              HTTPS certificates, and distributes cacheable files across edge
+              nodes.
+            </p>
+          </article>
+        </div>
+
+        <!-- H. Optional Mini Deployment Activity Panel -->
+        <div class="deploy-preview-card gs-reveal" aria-label="Sample deployment pipeline preview">
+          <div class="deploy-preview-header">
+            <span class="deploy-preview-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="4 17 10 11 4 5" />
+                <line x1="12" y1="19" x2="20" y2="19" />
+              </svg>
+              Sample Workflow Preview
+            </span>
+            <span class="concept-tag">Illustrative pipeline stages &bull; Requires connected provider
+              in production</span>
+          </div>
+
+          <div class="deploy-timeline">
+            <div class="deploy-event">
+              <span class="deploy-check" aria-hidden="true">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </span>
+              <span>Repository connected</span>
+            </div>
+            <div class="deploy-event">
+              <span class="deploy-check" aria-hidden="true">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </span>
+              <span>Build started</span>
+            </div>
+            <div class="deploy-event">
+              <span class="deploy-check" aria-hidden="true">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </span>
+              <span>Assets prepared</span>
+            </div>
+            <div class="deploy-event">
+              <span class="deploy-check" aria-hidden="true">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </span>
+              <span>Edge deployment complete</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         F. HTTPS / SSL-TLS EXPLAINER
+         ====================================================================== -->
+    <section id="security">
+      <div class="container security-grid">
+        <!-- Left Column: Visual Flow & What HTTPS Protects -->
+        <div class="security-diagram-card gs-reveal">
+          <span class="section-eyebrow">Transport Layer Security</span>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 6px">
+            How an HTTPS connection works
+          </h3>
+          <p style="font-size: 0.9rem; color: var(--text-secondary)">
+            Unlike plain HTTP, which transmits readable text over the network,
+            HTTPS wraps requests inside an encrypted TLS session.
+          </p>
+
+          <!-- Visual Connection Flow -->
+          <div class="tls-flow" role="group"
+            aria-label="Connection flow from Visitor's Browser through a TLS-secured connection to Website Server">
+            <div class="tls-node">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
+                <line x1="12" y1="17" x2="12" y2="21" />
+              </svg>
+              <div class="tls-node-title">Visitor’s Browser</div>
+              <div class="tls-node-sub">Verifies certificate</div>
+            </div>
+
+            <div class="tls-arrow" aria-hidden="true">&rarr;</div>
+
+            <div class="tls-node tls-tunnel">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--status-ok-text)"
+                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
+              <div class="tls-node-title">TLS-secured connection</div>
+              <div class="tls-node-sub">Encrypted in transit</div>
+            </div>
+
+            <div class="tls-arrow" aria-hidden="true">&rarr;</div>
+
+            <div class="tls-node">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
+                <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />
+                <line x1="6" y1="6" x2="6.01" y2="6" />
+                <line x1="6" y1="18" x2="6.01" y2="18" />
+              </svg>
+              <div class="tls-node-title">Website Server</div>
+              <div class="tls-node-sub">Presents public key</div>
+            </div>
+          </div>
+
+          <div style="font-size: 0.84rem; color: var(--text-secondary)">
+            <strong>During the TLS handshake:</strong> The browser and server
+            agree on cipher suites, verify the server’s cryptographic
+            certificate issued by a trusted Certificate Authority (CA), and
+            establish shared session keys.
+          </div>
+        </div>
+
+        <!-- Right Column: Clear Educational Breakdown -->
+        <div class="gs-reveal">
+          <span class="section-eyebrow">Web Security Fundamentals</span>
+          <h2 class="section-title">
+            Security starts with a trusted HTTPS connection
+          </h2>
+          <p class="section-subtitle">
+            The padlock indicator in a browser address bar confirms that
+            communication with the domain is encrypted in transit, protecting
+            sensitive data from eavesdropping or tampering on public networks.
+          </p>
+
+          <ul class="security-list">
+            <li>
+              <svg class="security-list-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span><strong>Confidentiality:</strong> Encrypts form submissions,
+                login credentials, session tokens, and page content while
+                traveling across networks.</span>
+            </li>
+            <li>
+              <svg class="security-list-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span><strong>Data Integrity:</strong> Detects if transmitted bytes
+                were altered or injected by intermediaries between the server
+                and visitor.</span>
+            </li>
+            <li>
+              <svg class="security-list-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span><strong>Server Authentication:</strong> Uses a digital TLS
+                certificate to confirm the browser is talking to the intended
+                domain owner.</span>
+            </li>
+          </ul>
+
+          <div class="security-caveat" role="note">
+            <strong>Important scope boundary:</strong> HTTPS secures data
+            <em>in transit</em>, but it does not guarantee that a website is
+            free from malware, phishing, application-level vulnerabilities, or
+            insecure backend code.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         G. LIVE SPEED TEST SECTION (HONEST BROWSER TIMING MEASUREMENT)
+         ====================================================================== -->
+    <section class="speedtest-section" id="speed-test">
+      <div class="container">
+        <div class="section-header centered gs-reveal">
+          <span class="section-eyebrow">Browser Diagnostics</span>
+          <h2 class="section-title">Measure your connection experience</h2>
+          <p class="section-subtitle">
+            Run a genuine browser-side response measurement using the standard
+            Performance &amp; Fetch Timing APIs on your current session.
+          </p>
+        </div>
+
+        <div class="speedtest-panel gs-reveal">
+          <div class="speedtest-top">
+            <div>
+              <h3 style="
+                    font-size: 1.15rem;
+                    font-weight: 700;
+                    margin-bottom: 4px;
+                  " id="measurement-title">
+                Browser Navigation &amp; Same-Origin Timing
+              </h3>
+              <p style="font-size: 0.88rem; color: var(--text-secondary)" id="measurement-subtitle">
+                Measures local browser/same-origin response timing—not
+                simulated regional server pings.
+              </p>
+            </div>
+
+            <div class="speedtest-controls">
+              <button type="button" class="btn btn-primary" id="run-speedtest-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+                <span id="run-speedtest-label">Run Speed Test</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="progress-track" aria-hidden="true">
+            <div class="progress-fill" id="speedtest-progress"></div>
+          </div>
+
+          <!-- Results Grid (Live Region for Assistive Technology) -->
+          <div class="speedtest-results" aria-live="polite" aria-atomic="true">
+            <div class="metric-tile">
+              <span class="metric-tile-label">Measurement Status</span>
+              <span class="metric-tile-value" id="st-status" style="font-size: 1.35rem">Ready</span>
+              <span class="metric-tile-sub" id="st-method">Awaiting test start</span>
+            </div>
+
+            <div class="metric-tile">
+              <span class="metric-tile-label">Measured Response</span>
+              <span class="metric-tile-value" id="st-latency">— ms</span>
+              <span class="metric-tile-sub" id="st-type-label">Browser timing estimate</span>
+            </div>
+
+            <div class="metric-tile">
+              <span class="metric-tile-label">Assessment</span>
+              <span class="metric-tile-value" id="st-rating" style="font-size: 1.25rem">Not run</span>
+              <span class="metric-tile-sub" id="st-threshold">Thresholds: &lt;100ms / &lt;300ms</span>
+            </div>
+          </div>
+
+          <!-- Detailed Interpretation / Fallback Message -->
+          <div class="speedtest-feedback" id="st-feedback" role="status">
+            Click <strong>Run Speed Test</strong> to measure your browser’s
+            page timing or same-origin endpoint response. No random numbers or
+            fabricated regional latencies are used.
+          </div>
+
+          <p class="speedtest-integrity-note">
+            <strong>Measurement transparency:</strong> A static frontend
+            cannot accurately ping external edge regions (Mumbai, Virginia,
+            Frankfurt, Tokyo) without dedicated CORS-enabled regional
+            endpoints. When hosted over HTTP/HTTPS, this test measures a
+            lightweight same-origin request alongside Navigation Timing
+            metrics; when opened directly from a local file
+            (<code>file://</code>), it reports available Navigation Timing
+            data or an honest fallback notice.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       I. FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#top" class="brand-link" aria-label="CloudNova Home">
+            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <rect width="32" height="32" rx="8" fill="#38bdf8" fill-opacity="0.16" stroke="#38bdf8"
+                stroke-width="1.5" />
+              <path d="M9.5 20.5H22a4.2 4.2 0 0 0 .55-8.36A6 6 0 0 0 10.9 10.5 4.7 4.7 0 0 0 9.5 20.5Z" stroke="#38bdf8"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span>CloudNova</span>
+          </a>
+          <p class="footer-desc">
+            Global Edge Hosting concept interface demonstrating distributed
+            CDN caching, Git-driven deployments, and HTTPS transport security.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="footer-nav-title">Explore Sections</h2>
+          <ul class="footer-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#global-servers">Global Servers</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#security">HTTPS Security</a></li>
+            <li><a href="#speed-test">Live Speed Test</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>Built as a frontend concept &bull; Illustrative infrastructure
+          data</span>
+        <span>&copy; <span id="current-year">2026</span> CloudNova. All rights
+          reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       JAVASCRIPT: THEME, NAVIGATION, SMOOTH SCROLL, GSAP & SPEED TEST
+       ======================================================================== -->
+  <script src="script.js"></script>
+</body>
+
+</html>
