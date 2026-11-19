@@ -6,6 +6,10 @@ CloudNova is a polished, single-page cloud hosting and edge CDN product experien
 
 It is designed to communicate how modern edge hosting platforms deliver static assets globally, automate Git-based deployments, enforce HTTPS/TLS encryption, and measure real browser connection timing—while maintaining strict transparency between conceptual product visuals and real browser diagnostics.
 
+Live Website URL :- https://edge-cloud-webapp.netlify.app/
+
+GitHub Repo URL :- https://github.com/JatinJoshi-JJ/Edge-Cloud-Webapp.git
+
 ---
 
 ## ✨ Key Features
@@ -38,7 +42,7 @@ cloudnova-edge-hosting/
 └── README.md       # Project documentation, setup guide, and technical notes
 ```
 
-*(Note: The application is engineered as a zero-build, single-file `index.html` bundle with inline SVG graphics and CDN-hosted GSAP/Lenis scripts for effortless portability.)*
+_(Note: The application is engineered as a zero-build, single-file `index.html` bundle with inline SVG graphics and CDN-hosted GSAP/Lenis scripts for effortless portability.)_
 
 ---
 
@@ -47,6 +51,7 @@ cloudnova-edge-hosting/
 No build tools, package managers, or compilation steps are required.
 
 ### Option 1: Local Development Server (Recommended)
+
 Serving the project over HTTP enables the **Live Speed Test** to perform genuine same-origin HTTP fetch round-trip measurements:
 
 ```bash
@@ -56,9 +61,11 @@ python -m http.server 8080
 # OR using Node.js (npx)
 npx serve .
 ```
+
 Then open `http://localhost:8080` in your browser.
 
 ### Option 2: Direct File Open
+
 Double-click `index.html` or open it directly in any modern browser (`file://`). All animations, theme switching, and navigation work out of the box, and the speed test automatically switches to the **Browser Navigation Timing API** fallback.
 
 ---
@@ -70,8 +77,8 @@ Inside `index.html` (`<script>` block), you can customize the speed test behavio
 ```javascript
 const SPEED_TEST_CONFIG = {
   HEALTH_ENDPOINT_URL: null, // Set to a custom same-origin or CORS-enabled health URL if desired
-  REQUEST_TIMEOUT_MS: 6000,  // Abort timeout per sample request
-  SAMPLE_COUNT: 3            // Number of HTTP samples averaged per test run
+  REQUEST_TIMEOUT_MS: 6000, // Abort timeout per sample request
+  SAMPLE_COUNT: 3, // Number of HTTP samples averaged per test run
 };
 ```
 
@@ -80,8 +87,9 @@ const SPEED_TEST_CONFIG = {
 ## 🔍 Scope & Transparency Notice
 
 CloudNova is a **frontend product concept** built for demonstration and educational clarity:
-- **Regional Server Metrics**: Latency values shown in the *Global Servers* section (`18 ms`, `24 ms`, `21 ms`, `29 ms`) are explicitly labeled as **Illustrative demo data**.
-- **Browser Diagnostics**: The *Live Speed Test* measures only your current browser's same-origin HTTP response or local Navigation Timing—it does not claim to ping remote data centers.
+
+- **Regional Server Metrics**: Latency values shown in the _Global Servers_ section (`18 ms`, `24 ms`, `21 ms`, `29 ms`) are explicitly labeled as **Illustrative demo data**.
+- **Browser Diagnostics**: The _Live Speed Test_ measures only your current browser's same-origin HTTP response or local Navigation Timing—it does not claim to ping remote data centers.
 - **No External Image Dependencies**: All logos, icons, and network diagrams are crafted with lightweight inline SVGs.
 
 ---
